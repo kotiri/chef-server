@@ -55,7 +55,7 @@ bash "Create SSL Certificates" do
   not_if { ::File.exists?("/etc/chef/certificates/chef-server-proxy.pem") }
 end
 
-web_app "chef-server-proxy" do
+apache2_web_app "chef-server-proxy" do
   template "chef_server.conf.erb"
   api_server_name node['chef_server']['proxy']['api_server_name']
   api_server_aliases node['chef_server']['proxy']['api_aliases']
